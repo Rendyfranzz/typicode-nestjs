@@ -1,0 +1,29 @@
+version: '3'
+
+services:    
+
+  redis:
+    container_name: redis_container
+    image: redis:7.2.3-alpine3.18
+    restart: always
+    ports: 
+      - 6379:6379
+    volumes:
+      - rd_data:/data
+
+  postgres:
+    image: postgres:latest
+    container_name: postgres_typicode
+    environment:
+      POSTGRES_DB: typicode
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    ports:
+      - '6969:5432'
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+      - ./scripts:/docker-entrypoint-initdb.d/
+
+volumes:
+  rd_data:
+  pg_data:
