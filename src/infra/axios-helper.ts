@@ -1,7 +1,7 @@
 import axios, { AxiosInstance } from 'axios';
 
 interface IaxiosHelper<T> {
-  get: (url: string) => Promise<T>;
+  get: (url: string) => Promise<T[]>;
   post: (url: string, data: T) => Promise<T>;
   update: (url: string, data: T) => Promise<T>;
   delete: (url: string) => Promise<void>; // DELETE requests typically don't return data
@@ -16,8 +16,8 @@ export class AxiosHelper<T> implements IaxiosHelper<T> {
     });
   }
 
-  async get(url: string): Promise<T> {
-    const res = await this.axiosInstance.get<T>(url);
+  async get(url: string): Promise<T[]> {
+    const res = await this.axiosInstance.get<T[]>(url);
     return res.data;
   }
 

@@ -13,4 +13,5 @@ export const dataSourceOptions: DataSourceOptions = {
   database: process.env.POSTGRES_DB,
   entities: [__dirname + '/../**/*.entity{.ts,.js}'],
   synchronize: true, // do not set it true in production application
+  logging: true,
 };

@@ -22,6 +22,11 @@ export class TodoRepo extends Repository<Todo> {
     return res;
   }
 
+  async addMany(todos: CreateTodoDto[]): Promise<Todo[]> {
+    const res = await this.todoRepository.save(todos);
+    return res;
+  }
+
   async findAll(): Promise<Todo[]> {
     const res = await this.todoRepository.find();
     return res;
@@ -31,11 +36,17 @@ export class TodoRepo extends Repository<Todo> {
     const res = await this.todoRepository.find({
       where: { user: { id: userId } },
     });
+
     return res;
   }
 
   async findOneById(id: number): Promise<Todo> {
     const res = await this.todoRepository.findOne({ where: { id: id } });
+    // const query = await this.todoRepository.query(
+    //   `EXPLAIN SELECT * FROM todo WHERE id = ${id}`,
+    // );
+    // console.log(query);
+
     return res;
   }
 

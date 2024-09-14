@@ -19,27 +19,28 @@ export class TodoService {
   ) {}
 
   async getAllTodos(id: number) {
+    const user = await this.userRepo.findOneById(id);
+
     const resaxios = await this.axiosService.get('/todos');
-    console.log('resaxios:', resaxios);
+    console.log('resaxios:', resaxios.length);
+
     const cachedTodos = await this.cacheService.get('todos');
     if (cachedTodos) {
       return JSON.parse(cachedTodos);
     }
     console.log('Fetching from DB');
 
+    const todoReq: CreateTodoDto[] = resaxios.map((todo) => {
+      return {
+        title: todo.title,
+        user: user,
+        completed: todo.completed,
+      };
+    });
+    await this.todoRepo.addMany(todoReq);
+
     const res = await this.todoRepo.findAllByUserId(id);
     await this.cacheService.set('todos', JSON.stringify(res));
-    return res;
-  }
-
-  async getTodosFromAxios() {
-    const cachedTodos = await this.cacheService.get('todosAxios');
-    if (cachedTodos) {
-      return JSON.parse(cachedTodos);
-    }
-    console.log('Fetching from Axios');
-    const res = await this.axiosService.get('/todos');
-    await this.cacheService.set('todosAxios', JSON.stringify(res));
     return res;
   }
 
