@@ -19,8 +19,6 @@
     <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
   <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
 </p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
 ## Description
 
@@ -56,29 +54,44 @@ $ pnpm run test:e2e
 
 # test coverage
 $ pnpm run test:cov
+
 ```
 
-## Resources
+## How To run
 
-Check out a few resources that may come in handy when working with NestJS:
+```bash
+# run db and redis using docker
+$ docker compose up -d
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+# run app
+$ pnpm start:dev
 
-## Support
+```
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+## Endpoint
 
-## Stay in touch
+### Auth
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+| No  | Route            | Method | IsLogin | Deskripsi        |
+| --- | ---------------- | ------ | ------- | ---------------- |
+| 1   | `/auth/register` | POST   | `false` | Register user    |
+| 2   | `/auth/login`    | POST   | `true`  | Login Usert      |
+| 3   | `/auth/me`       | GET    | `true`  | Get current User |
+
+### Todos
+
+| No  | Route       | Method | IsLogin | Deskripsi          |
+| --- | ----------- | ------ | ------- | ------------------ |
+| 1   | `/todo`     | POST   | `true`  | Create todo        |
+| 2   | `/todo`     | GET    | `true`  | Get todo by user   |
+| 3   | `/todo/:id` | GET    | `true`  | Get todo by Id     |
+| 4   | `/todo/:id` | PATCH  | `true`  | Change todo status |
+| 5   | `/todo/:id` | PUT    | `true`  | Update todo        |
+| 6   | `/todo/:id` | DELETE | `true`  | Delete todo        |
+
+## Thunder cllient
+
+You can download the thunder client file for test the api [Click Me](https://github.com/Rendyfranzz/typicode-nestjs/blob/main/thunder-collection_dot.json)
 
 ## License
 
