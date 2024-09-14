@@ -125,6 +125,8 @@ export class TodoService {
     const resAxios = await this.axiosService.delete(`/todos/${id}`);
     console.log('resAxios:', resAxios);
     await this.todoRepo.delete(id);
+
+    await this.cacheService.del(`todo-${id}`);
     return 'Todo deleted';
   }
 }
