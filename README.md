@@ -58,9 +58,9 @@ $ pnpm start:dev
 | 5   | `/todo/:id` | PUT    | `true`  | Update todo        |
 | 6   | `/todo/:id` | DELETE | `true`  | Delete todo        |
 
-## Thunder cllient
+## Thunder Client
 
-You can download the thunder client file for test the api [Click Me](https://github.com/Rendyfranzz/typicode-nestjs/blob/main/thunder-collection_dot.json)
+You can download the thunder client file for test the API [Click Me](https://github.com/Rendyfranzz/typicode-nestjs/blob/main/thunder-collection_dot.json)
 
 ## License
 
