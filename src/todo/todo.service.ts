@@ -92,7 +92,6 @@ export class TodoService {
     const res = await this.todoRepo.updateTodo(todo);
 
     await this.cacheService.del(`todo-${id}`);
-    console.log('res:', res);
     return res;
   }
 
